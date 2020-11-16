@@ -20,6 +20,12 @@ const (
 	RBRACE		= "}" 
 	FUNCTION	= "FUNCTION"
 	LET			= "LET"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
+	LT = "<"
+	GT = ">"
 )
 
 var t = []string{"let", "fn"}
