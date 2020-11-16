@@ -26,9 +26,22 @@ const (
 	SLASH    = "/"
 	LT = "<"
 	GT = ">"
+	TRUE     = "TRUE"
+    FALSE    = "FALSE"
+    IF       = "IF"
+    ELSE     = "ELSE"
+    RETURN   = "RETURN"
 )
 
-var t = []string{"let", "fn"}
+var t = []string{
+	"let",
+	"fn",
+	"true",
+    "false",
+    "if",
+    "else",
+    "return",
+	}
 
 func LookupIdent(ident string) string {
 	for i := 0; i < len(t); i++ {
@@ -46,6 +59,16 @@ func getKeyType(ident string) string {
 		key = LET
 	case "fn":
 		key = FUNCTION
+	case "true":
+		key = TRUE
+	case "false":
+		key = FALSE
+	case "if":
+		key = IF
+	case "else":
+		key = ELSE
+	case "return":
+		key = RETURN
 	}
 	return key
 }
