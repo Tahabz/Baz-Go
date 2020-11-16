@@ -30,9 +30,11 @@ const (
     FALSE    = "FALSE"
     IF       = "IF"
     ELSE     = "ELSE"
-    RETURN   = "RETURN"
+	RETURN   = "RETURN"
+	EQ     = "=="
+	NOT_EQ = "!="
 )
-
+ 
 var t = []string{
 	"let",
 	"fn",
