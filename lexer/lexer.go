@@ -10,6 +10,7 @@ type Lexer struct {
 
 func New(input string) *Lexer {
 	l := &Lexer{input: input};
+	l.readChar()
 	return l
 }
 
@@ -25,7 +26,6 @@ func (l *Lexer) readChar() {
 
 func (l *Lexer) NextToken() token.Token { 
 	var tok token.Token
-	l.readChar()
 	l.skipWhitespace()
 	switch l.ch { 
 	case '=':
@@ -52,10 +52,26 @@ func (l *Lexer) NextToken() token.Token {
 			tok.Literal = l.readIdentifier()
 			tok.Type = token.LookupIdent(tok.Literal)
 			return tok
+		} else if isDigit(l.ch) {
+			tok.Type = token.INT
+			tok.Literal = l.readNumber()
+			return tok
 		}
 		tok = newToken(token.ILLEGAL, l.ch)
 	}
+	l.readChar();
 	return tok 
+}
+
+func (l *Lexer) readNumber() string {
+	position := l.position
+	for isDigit(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position];
+}
+
+func isDigit(ch byte) bool { return '0' <= ch && ch <= '9'
 }
 
 func (l *Lexer) readIdentifier() string {
