@@ -34,7 +34,7 @@ const (
 	EQ     = "=="
 	NOT_EQ = "!="
 )
- 
+
 var t = []string{
 	"let",
 	"fn",
