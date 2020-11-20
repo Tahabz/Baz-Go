@@ -8,9 +8,9 @@ import (
 
 func TestLetStatements(t *testing.T) {
 	input := `
-	let x 5;
-	let = 10;
-	let 838383;
+	let x = 5;
+	let u = 10;
+	let c = 838383;
    `
 	l := lexer.New(input)
 	p := New(l)
@@ -29,8 +29,8 @@ func TestLetStatements(t *testing.T) {
 		expecedIdentifier string
 	} {
 		{"x"},
-		{"y"},
-		{"foobar"},
+		{"u"},
+		{"c"},
 	}
 	for i, tt := range tests {
 		stmt := program.Statements[i]
